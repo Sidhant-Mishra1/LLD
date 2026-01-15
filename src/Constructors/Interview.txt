@@ -1,0 +1,49 @@
+Q. CAN A CONSTRUCTOR BE FINAL, STATIC OR ABSTRACT? WHY OR WHY NOT?
+
+-->A constructor cant be inherited, so final is irrelevant
+-->A constructor is used to create objects.static belongs to the class, not to objects.
+-->Abstract means incomplete and not usable directly.Since constructors must run to create objects, Java does not allow abstract constructors.
+
+Q.WHAT HAPPENS IF YOU EXPLICITLY DEFINE A CONSTRUCTOR WITH ARGUMENTS BUT NO DEFAULT CONSTRUCTOR?
+
+-->The default constructor is not automatically provided.Attempting to create an object with no arguments will result in compilation error.
+
+Q.WHAT HAPPENS IF YOU CREATE AN OBJECT OF THE SUBCLASS?WHICH CONSTRUCTOR IS CALLED FIRST?
+
+-->Parent (superclass) constructor is called first,then the child (subclass) constructor.
+
+class Parent {
+    Parent() {
+        System.out.println("Parent constructor");
+    }
+}
+
+class Child extends Parent {
+    Child() {
+        System.out.println("Child constructor");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Child obj = new Child();
+    }
+}
+
+OUTPUT
+Parent constructor
+Child constructor
+
+Q. WHAT HAPPENS IF A CONSTRUCTOR IS SYNCHRONIZED?
+
+--> A synchronized constructor is allowed but makes no sense, as object-level synchronization is not applicable before the object is fully created.
+
+Q. CAN A CONSTRUCTOR BE INHERITED?
+
+--> No, but a subclass can call its superclass constructor using super();
+
+Q. CAN A CONSTRUCTOR HAVE A RETURN STATEMENT?
+
+--> No, Constructors cant return a value but they can have a return statement to exit early.
+
+
